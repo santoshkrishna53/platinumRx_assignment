@@ -12,8 +12,8 @@ export class RoutingService {
         { id: 'cashfree', weight: 10 },
     ];
 
-    selectGateway(): string {
-        const healthyGateways = this.gateways.filter(g => this.healthService.isAvailable(g.id));
+    selectGateway(orderId: string): string {
+        const healthyGateways = this.gateways.filter(g => this.healthService.isAvailable(g.id, orderId));
 
         if (healthyGateways.length === 0) {
             throw new HttpException('All payment gateways are currently down.', HttpStatus.SERVICE_UNAVAILABLE);

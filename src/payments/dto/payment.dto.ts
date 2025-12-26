@@ -1,5 +1,5 @@
 // src/payments/dto/payment.dto.ts
-import { IsString, IsNumber, IsObject, IsNotEmpty, IsIn } from 'class-validator';
+import { IsString, IsNumber, IsObject, IsNotEmpty, IsIn, IsOptional } from 'class-validator';
 
 export class InitiateTransactionDto {
     @IsString()
@@ -29,5 +29,6 @@ export class CallbackDto {
     gateway: string;
 
     @IsString()
+    @IsOptional()
     reason?: string;
 }
